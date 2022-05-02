@@ -1,0 +1,1 @@
+LICENSEINFO='1 developer license';

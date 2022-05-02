@@ -1,0 +1,50 @@
+package CB4D2005;
+
+{$R *.res}
+{$R 'cb4tables.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Tiriss CB4 Tables'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+{$DEFINE TRIAL}
+
+requires
+  designide,
+  vcl,
+  dbrtl,
+  vcldb,
+  dcldb,
+  rtl;
+
+contains
+  CB4Defs in 'CB4Defs.pas',
+  CB4Reg in 'CB4Reg.pas',
+  cb4tables in 'cb4tables.pas',
+  {$IFDEF TRIAL}
+  CodeBaseIntf in 'CodeBaseIntf.pas',
+  {$ELSE}
+  CodeBase in '..\..\CodeBase.pas',
+  {$ENDIF}
+  CB4RecordBuffers in 'CB4RecordBuffers.pas';
+
+end.

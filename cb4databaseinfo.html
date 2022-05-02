@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<title>TCB4Database info</title>
+</head>
+
+<body background="images/blueback.gif" bgcolor="#FFFFFF"
+link="#0000D0" vlink="#0000F0">
+
+<p><b><font color="#0000A0" face="Arial" size="5">TCB4Database
+Info</font></b></p>
+
+<p><strong><img src="images/tcb4database.gif" align="left"
+hspace="10" vspace="2" width="48" height="48"></strong>A TCB4Table can work in cooperation with a TCB4Database.
+It handles connections to the Server in a C/S configurations and
+provides an easy way to change between different database
+directories. It is comparable to the TDatabase of Delphi.</p>
+
+<p>In Delphi/C++Builder 5 and higher and in Kylix, TCB4Database is a descendant of
+TCustomConnection. For an explanation of the properties and
+methods of TCB4Database see the BDE's TDatabase.</p>
+
+<p><b><font color="#0000A0" size="3" face="Arial"><br>
+</font><font color="#0000A0" face="Arial" size="4">
+Compatible with TDatabase</font></b></p>
+
+<p><font size="2" face="Courier New"><strong>procedure </strong>Close;<br>
+<strong>procedure </strong>Commit;<strong><br>
+procedure </strong>Open;<br>
+<strong>procedure </strong>Rollback;<br>
+<strong>procedure </strong>StartTransaction;</font></p>
+
+<p><font size="2" face="Courier New"><strong>property </strong>InTransaction:
+Boolean<br>
+<strong>property </strong>Connected: Boolean;<br>
+<strong>property </strong>DatabaseName: string;<br>
+<strong>property </strong>DataSetCount:Integer;<br>
+<strong>property </strong>DataSets[Index: Integer]: TDataSet<br>
+<strong>property </strong>LoginPrompt: Boolean;<br>
+<strong>property </strong>OnAfterConnect;<br>
+<strong>property </strong>OnAfterDisconnect;<br>
+<strong>property </strong>OnBeforeConnect;<br>
+<strong>property </strong>OnBeforeDisconnect;<br>
+<strong>property </strong>OnLogin: TDatabaseLoginEvent;<br>
+</font></p>
+
+<p><b><font color="#0000A0" face="Arial" size="4">Different from
+TDatabase</font></b></p>
+
+<p><font size="2" face="Courier New"><strong>property </strong>CBCODE4:
+CODE4;<br>
+<strong>property </strong>Params: TStrings; - <em>Extra params:
+'SERVER NAME', 'PROCESS ID' and 'DesignTablePath';</em><br>
+</font></p>
+
+<p><b><font color="#0000A0" face="Arial" size="4">Extra in
+TDatabase</font></b></p>
+
+<p><font size="2" face="Courier New">
+<strong>property </strong>ConnectionTimeout: Integer; - <em>Specifies amount of time to attempt a connection (corresponds to Codebase code4timeout).</em><br>
+<strong>property </strong>DatabaseType: TCB4DatabaseType; - <em>Returnes on runtime the type of the CodeBase DLL that's being used. Values are: dtCB4Unknown, dtCB4Foxpro, dtCB4Clipper, dtCB4dBase</em><br>
+<strong>property </strong>MemoExprSize: Integer; - <em>Size of Memo that can be used in expressions (code4memSizeMemoExpr).</em><br>
+<strong>property </strong>RaisedError: Integer; - <em>Last raised codebase error code for this database.</em><br>
+<br>
+<strong>property </strong>AutoDatabaseName: Boolean; - <em>Indicates whether or not a unique databasename is automatically generated for this database. <a href="#AutoDatabaseName">More info.</a> Default=False</em><br>
+<strong>property </strong>IndexPath: string; - <em>Path for index files</em><br>
+<strong>property </strong>TablePath: string; - <em>Path for table files</em><br>
+<strong>property </strong>LockAttempts: SmallInt; - <em>Number of lock attempts (code4lockAttempts). Default=-1 (Attempt for ever)</em><br>
+<strong>property </strong>LockDelay: Word; - <em>Wait time (measured in 100ths of a second) between lock attempts (code4lockDelay). Default=100 (1 second)</em><br>
+
+</font></p>
+<br>
+<h3><b><font color="#0000A0" face="Arial" size="4">AutoDatabaseName</font></b></h3>
+<p><a name="Autodatabasename"></a>From version 2.0 on, a new property
+is added to TCB4Database: <font face="Courier New">AutoDatabaseName</font>.
+Normally each TCB4Database needs to have a unique name. But in a multithreaded environment
+this can give problems if you have multiple instances of the same form or datamodule using
+a TCB4Database with the same name. If you set this property to true, CB4 Tables will generate
+a unique Databasename for this database. This means that you can't set the DatabaseName yourself
+anymore. And that you might need to connect your tables to your database using the Database property
+instead of the DatabaseName property. This is equal to the way, for example, ADO connects tables to databases.</p>
+
+<p><font size="1">&copy; MMV </font><a href="http://www.tiriss.com"><font
+size="1">Tiriss</font></a></p>
+</body>
+</html>

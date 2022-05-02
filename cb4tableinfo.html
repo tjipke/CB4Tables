@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="11net">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>TCB4Table info</title>
+</head>
+
+<body background="images/blueback.gif" bgcolor="#FFFFFF"
+link="#0000D0" vlink="#0000F0">
+
+<p><b><font color="#0000A0" face="Arial" size="5">TCB4Table Info</font></b>
+</p>
+
+<p><img src="images/tcb4table.gif" align="left" hspace="10"
+vspace="2" width="48" height="48">TCB4Table is a
+wrapper around CodeBase that can be used as a BDE replacement for
+a TTable. The focus during developing this component is on
+keeping it as compatible as possible with Borland's TTable. Which
+has as major advantages that you can easily migrate to or from
+the BDE or an other BDE replacement.</p>
+
+<p>Of course TCB4Table is a descendant of TDataSet
+so it can be used by any standard Delphi or third party control
+using a TDataSet. Or in other words: you can use it wherever you
+normally would use a TTable.</p>
+
+<p>How compatible TCB4Table is with TTable
+follows:</p>
+
+<h3><b><font color="#0000A0" size="3" face="Arial"><br>
+</font><font color="#0000A0" face="Arial" size="4">
+Compatible with TTable</font></b></h3>
+
+<p><font size="2" face="Courier New"><strong>procedure</strong>
+ApplyRange;<br>
+<strong>function </strong>BookmarkValid(Bookmark: TBookmark):
+Boolean;<strong><br>
+function </strong>CompareBookmarks(Bookmark1, Bookmark2:
+TBookmark): Integer;<strong><br>
+procedure</strong> Cancel;<br>
+<strong>procedure</strong> CancelRange;<br>
+<strong>procedure</strong> CloseIndexFile(const IndexFileName:
+string);<br>
+<strong>function </strong>CreateBlobStream(Field: TField; Mode:
+TBlobStreamMode): TStream;<br>
+<strong>procedure</strong> CreateTable; - <em>(<a href="#CreateTables">More
+info</a>)</em><br>
+<strong>procedure</strong> DeleteTable;<br>
+<strong>procedure </strong>EditKey;<br>
+<strong>procedure </strong>EditRangeEnd;<br>
+<strong>procedure </strong>EditRangeStart;<br>
+<strong>procedure</strong> EmptyTable;<br>
+<strong>function </strong>FindKey(const KeyValues: array of
+const): Boolean;<br>
+<strong>procedure </strong>FindNearest(const KeyValues: array of
+const);<br>
+<strong>function </strong>GetCurrentRecord(Buffer: PChar):
+Boolean;<br>
+<strong>procedure </strong>GetIndexInfo;<br>
+<strong>procedure </strong>GetIndexNames(List: TStrings);<br>
+<strong>procedure</strong> GotoCurrent(Table: TCB4Table);<br>
+<strong>function </strong>GotoKey: Boolean;<br>
+<strong>procedure </strong>GotoNearest;<br>
+<strong>function </strong>IsSequenced: Boolean;<br>
+<strong>procedure </strong>OpenIndexFile(const IndexName:
+string);<br>
+<strong>function </strong>Locate(const KeyFields: string; const
+KeyValues: Variant; Options: TLocateOptions): Boolean;<br>
+<strong>function</strong> Lookup(const KeyFields: string; const
+KeyValues: Variant; const ResultFields: string): Variant;<br>
+<strong>procedure </strong>Post;<br>
+<strong>procedure </strong>SetKey;<br>
+<strong>procedure </strong>SetRange(const StartValues, EndValues:
+array of const);<br>
+<strong>procedure </strong>SetRangeEnd;<br>
+<strong>procedure </strong>SetRangeStart;<br>
+<strong>function </strong>Translate(Src, Dest: PChar; ToOem: Boolean): Integer;</font></p>
+
+<p><font size="2" face="Courier New"><strong>property </strong>Active:
+Boolean;<br>
+<strong>property </strong>AfterCancel;<br>
+<strong>property </strong>AfterClose;<br>
+<strong>property </strong>AfterDelete;<br>
+<strong>property </strong>AfterEdit;<br>
+<strong>property </strong>AfterInsert;<br>
+<strong>property </strong>AfterOpen;<br>
+<strong>property </strong>AfterPost;<br>
+<strong>property </strong>AfterScroll;<br>
+<strong>property </strong>AutoCalcFields: Boolean;<br>
+<strong>property </strong>BeforeCancel;<br>
+<strong>property </strong>BeforeClose;<br>
+<strong>property </strong>BeforeDelete;<br>
+<strong>property </strong>BeforeEdit;<br>
+<strong>property </strong>BeforeInsert;<br>
+<strong>property </strong>BeforeOpen;<br>
+<strong>property </strong>BeforePost;<br>
+<strong>property </strong>BeforeScroll;<strong><br>
+property </strong>CacheBlobs: Boolean;<br>
+<strong>property </strong>CanModify: Boolean;<br>
+<strong>property </strong>Exclusive: Boolean;<br>
+<strong>property </strong>Exists: Boolean;<strong><br>
+property </strong>ExpIndex: Boolean;<br>
+<strong>property </strong>FieldDefs;<br>
+<strong>property </strong>Filtered;<br>
+<strong>property </strong>IndexDefs: TIndexDefs;<br>
+<strong>property </strong>IndexFieldCount: Integer<br>
+<strong>property </strong>IndexFieldNames: string<br>
+<strong>property </strong>IndexFields[Index: Integer]: TField<br>
+<strong>property </strong>IndexFiles: TStrings<br>
+<strong>property </strong>IndexName: string<br>
+<strong>property </strong>KeyExclusive: Boolean<br>
+<strong>property </strong>KeySize: Word<br>
+<strong>property </strong>MasterFields: string;<br>
+<strong>property </strong>MasterSource: TDataSource;<br>
+<strong>property</strong> ReadOnly: Boolean<br>
+<strong>property</strong> RecNo: Integer<br>
+<strong>property</strong> RecordCount: Integer<br>
+<strong>property</strong> Recordsize: Word<br>
+<strong>property </strong>StoreDefs: Boolean; <em>// not in Delphi 3!</em><br>
+<strong>property</strong> TableName: string</font></p>
+
+<p><em>And ofcourse everything
+inherited from TDataSet<br>
+</em></p>
+
+<h3><b><font color="#0000A0" face="Arial" size="4">Different from
+TTable</font></b></h3>
+
+<p><font size="2" face="Courier New"><strong>property </strong>Database:
+TCB4Database; - <em>type is TCB4Database i.s.o. TDatabase</em><br>
+<strong>property </strong>DatabaseName: string <br>
+<strong>property</strong> Filter - <em>uses </em><em><strong>dBase</strong></em><em>
+Expressions</em><br>
+</font></p>
+
+<h3><b><font color="#0000A0" face="Arial" size="4">Extra in
+TCB4Table</font></b></h3>
+
+<p><font size="2" face="Courier New">
+<strong>function </strong>CreateStringFilterText(const aFieldName: string; aFieldValue: string; aFieldLength: Integer): string;<br>
+<i>Creates the text for usage in a filter where the Field should have a specified value. It takes care of quotes and filling out with
+spaces.
+</i></font></p>
+
+<blockquote>
+
+<p><font size="2" face="Courier New"><i><b>Example:</b></i> CreateStringFilterText('FieldName',
+'He searches &quot;quotes&quot;!', FieldLength(Field))<br>
+<i>Results in the text for a
+filter that can be used to show only the records that have FieldName filled with
+the value 'He searches &quot;quotes&quot;!'.&nbsp;</i></font></p>
+
+</blockquote>
+<p><font size="2" face="Courier New">
+<strong>function </strong>FieldLength(Field: TField): Integer;<br>
+<i>Get physical length of field</i>
+</font> </p>
+
+<p><font size="2" face="Courier New">
+<strong>function </strong>GetFieldDataRaw(aField: TField; aBuffer: Pointer; aLength: Integer): Boolean;<br>
+ <i>Get the raw data of a Field copied into a Buffer. See
+also the help on GetFieldData.</i>
+</font> </p>
+
+<p><font size="2" face="Courier New">
+<strong>procedure </strong>SetFieldDataRaw(aField: TField; aBuffer: Pointer; aLength: Integer);<br>
+<i>Sets the raw data of a field copied from the aBuffer.
+See also <b>GetFieldDataRaw</b>.</i>
+</font> </p>
+
+<blockquote>
+
+<p><font size="2" face="Courier New"><i><b>Example:</b> A string assigning to a
+field:</i></font></p>
+
+  <p><font size="2" face="Courier New">F := CB4Table.FieldByName('FieldName');<br>
+  S := StringOfChar(' ', CB4Table.FieldLength(F));<br>
+  CB4Table.Insert;<br>
+  CB4Table.SetFieldDataRaw(F, Pointer(S), Length(S));<br>
+CB4Table.Post;
+  </font></p>
+
+</blockquote>
+<p><font size="2" face="Courier New">
+<strong>property </strong>CBDATA4: DATA4;<br>
+ <em>Pointer to Codebase data</em>
+</font></p>
+
+<p><font size="2" face="Courier New">
+<strong>property </strong>IndexPaths[Index: Integer]: string;<br>
+<em>The
+complete paths of the used indexfiles (-1 is productionindex)</em>
+</font></p>
+
+<p><font size="2" face="Courier New">
+<strong>property</strong>  Options: TCB4TableOptions;<br>
+ <i>The following options
+are available:</i>
+</font></p>
+<ul>
+  <li><font size="2" face="Courier New">
+toLockOnPost - <em>Lock record on post not on edit (False)</em>
+</font></li>
+  <li><font size="2" face="Courier New">
+toShowDeletedRecords - <em>Showdeleted records (False)</em>
+</font></li>
+  <li><font size="2" face="Courier New">
+toUseProductionIndex - <em>Automatically open production index (True)</em>
+</font></li>
+  <li><font size="2" face="Courier New">
+toSequenceIndex - <em>Simulates recordnumbers when using an index, so scrollbar indicates relative position in table
+(False)
+</em>
+</font></li>
+  <li><font size="2" face="Courier New">
+toRecognizeTagExpressions - <i>Recognize the fields used in
+TagExpressions (index), so Lookups and locates can make use of these indexes. <a href="#TagExpressions">More
+info</a>  (False)</i>
+</font></li>
+  <li><font size="2" face="Courier New">
+toInvalidDatesAsNull - <i>Represents invalid dates in
+date fields as Null's in stead of the normal behaviour of generating an
+exception (False)
+</i>
+</font></li>
+  <li><font size="2" face="Courier New">toNoCharacterTranslation - <i>Never does
+    a character translation (OEM To Ansi) even if the transliterate property of
+    a Field is set, or using the Translate function. Just returns the original
+    string (False)
+</i>
+</font></li>
+</ul>
+<p><font size="2" face="Courier New">
+<strong>property </strong>RaisedError: Integer;<br>
+<font color="#0000A0"><em>Last raised codebase error code for this table.</em></font></p>
+<p><strong>property </strong>TablePath: string;<br>
+<font color="#0000A0"> <em>Complete path of table</em></font><br>
+</font></p>
+
+<h3><b><font color="#0000A0" face="Arial" size="4">Not
+implemented (yet) in TCB4Table</font></b></h3>
+
+<p><font size="2" face="Courier New"><strong>procedure</strong>
+ AddIndex(const Name, Fields: string; Options: TIndexOptions;
+const DescFields: string = '');<br>
+<strong>procedure </strong>ApplyUpdates;<strong><br>
+function </strong>BatchMove(ASource: TBDEDataSet; AMode: TBatchMode): Longint;<br>
+<strong>procedure </strong>CancelUpdates;<strong><br>
+function </strong>CheckOpen(Status: DBIResult): Boolean;<br>
+<strong>procedure</strong>  CloseDatabase(Database: TDatabase);<br>
+<strong>procedure </strong>CommitUpdates;<strong><br>
+function </strong>ConstraintCallBack(Req: DsInfoReq; var ADataSources:
+DataSources): DBIResult;<br>
+<strong>function </strong>ConstraintsDisabled<strong>: </strong>Boolean;<strong><br>
+procedure</strong>  DeleteIndex(const Name: string);<br>
+<strong>procedure </strong>DisableConstraints;<br>
+<strong>procedure </strong>EnableConstraints;<br>
+<strong>procedure </strong>FetchAll;<br>
+<strong>procedure </strong>FlushBuffers;<br>
+<strong>procedure</strong>  GetDetailLinkFields(MasterFields, DetailFields:
+TList);<br>
+<strong>procedure</strong>  GetProviderAttributes(List: TList);<br>
+<strong>procedure</strong>  LockTable(LockType: TLockType);<br>
+<strong>function </strong>OpenDatabase: TDatabase;<br>
+<strong>procedure</strong>  RenameTable(const NewTableName: string);<br>
+<strong>procedure </strong>RevertRecord;<br>
+<strong>procedure</strong>  UnlockTable(LockType: TLockType);<br>
+<strong>function </strong>UpdateStatus: TUpdateStatus;</font></p>
+
+<p><font size="2" face="Courier New"><strong>property </strong>CachedUpdates:
+Boolean;<br>
+<strong>property</strong>  DBHandle: HDBIDB;<br>
+<strong>property</strong>  DBLocale: TLocale;<br>
+<strong>property</strong>  DBSession: TSession;<br>
+<strong>property</strong> FilterOptions<br>
+<strong>property </strong>Handle: HDBICur;<br>
+<strong>property </strong>KeyFieldCount: Integer;<br>
+<strong>property </strong>Locale: TLocale;<br>
+<strong>property </strong>TableLevel: Integer;<br>
+<strong>property </strong>Constraints;<br>
+<strong>property </strong>DefaultIndex: Boolean;<br>
+<strong>property </strong>ObjectView;<br>
+<strong>property</strong>  Provider;<br>
+<strong>property</strong>  SessionName: string;<br>
+<strong>property </strong>TableType: TTableType;<br>
+<strong>property </strong>UpdateMode;<br>
+<strong>property </strong>UpdateObject;<br>
+<strong>property </strong>UpdatesPending: Boolean;<br>
+<strong>property </strong>UpdateRecordTypes;</font></p>
+
+<p><font size="2" face="Courier New"><strong>property </strong>OnUpdateError;<br>
+<strong>property </strong>OnUpdateRecord;<br>
+</font></p>
+
+<h3><b><font color="#0000A0" face="Arial" size="4">Creating tables</font></b></h3>
+
+<p><a name="CreateTables"></a>You can create tables from within CB4 Tables using
+the CreateTable function, however you don't have much influence on what kind of
+fields and what their sizes should be with this function:
+It uses the same translations from FieldDefs in Delphi to Physical Fields in the
+table as the BDE does.
+Therefore it is recommended that you use the lowlevel CodeBase functions (<font face="Courier New">d4create, i4create</font>) to create tables.</p>
+
+<h3><b><font color="#0000A0" face="Arial" size="4">Recognize tag expressions</font></b></h3>
+
+<p><a name="TagExpressions"></a>From version 1.20 on, a new option
+is added to TCB4Table.Options: <font face="Courier New">toRecognizeTagExpressions</font>.
+If you turn this option on, CB4 Tables will parse expressions used in indexes to
+see how it is build up from fields. This is very useful if you are using
+expressions to concatenate fields: Locate and lookup functions can then use
+these indexes to perform a search.</p>
+
+<p>The following constructions are recognized:</p>
+<ul>
+  <li>Field1 + Field2</li>
+  <li>UPPER(CharacterField)</li>
+  <li>DTOS(DateField)</li>
+  <li>IIF(LogicalField, 'T', 'F')</li>
+  <li>STR(NumericField, FieldLength, FieldDecimals)</li>
+  <li>ASCEND(Field)</li>
+  <li>DESCEND(Field)</li>
+</ul>
+<p>So if you have: STR(ID, 10, 0) + UPPER(NAME), it will be
+recognized as an index on the fields ID; NAME and as being case insensitive.</p>
+<p>&nbsp;</p>
+<p><font size="1">&copy; MMV </font><a href="http://www.tiriss.com"><font
+size="1">Tiriss</font></a></p>
+</body>
+</html>

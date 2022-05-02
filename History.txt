@@ -1,0 +1,282 @@
+CB4 Tables - History
+version 2.00
+Copyright (c) MMV Tiriss
+
+> V0.90 <
+
+First public beta
+
+TCB4Table
+- Basic functionality
+
+TCB4Database
+- Really only a container for paths and CODE4 settings
+
+
+> V0.92 <
+
+Second public beta
+
+TCB4Table
+- Added Lookup/Locate function
+- Added Create-/Delete- and EmptyTable
+- Added Storedefs to store fielddefs and indexdefs in DFM in Delphi 4
+- Removed memoryleaks
+- Removed (a lot of) bugs
+- Added property editor for TableName
+
+TCB4Database
+- Added Client/server functionality (login)
+- Added property editor for TablePath and IndexPath
+
+
+> V0.93 <
+
+TCB4Table
+- Added MasterSource/MasterFields for Master/Detail relations
+- Added BookmarkValid/CompareBookmarks
+- Added Exists property
+- Improved performance
+- Removed bookmarking and expression freeing bugs
+- Now possible to compile using cb4tables.dcu against any CodeBase.pas
+
+
+> v1.00 <
+
+First real release
+(Now in two versions Trial and Retail)
+
+TCB4Database
+- Added support for transactions
+
+
+> v1.01 <
+
+TCB4Table
+- Added GotoCurrent method
+- Improved Bookmarkvalid function
+- Strings weren't right trimmed, now they are
+- Clearing a string field, sometimes resulted in a field filled with rubbish.
+  This was Solved.
+- Bug solved in unlocking record after writing to them
+- Now possible to search and do ranges on numeric tags
+- Improved and removed bugs from ranges
+
+
+> v1.02 < (only in beta)
+
+TCB4Table
+- Bug in memofields during calculating fields solved
+- Better handling of SetKey/GotoKey
+- Solved bug in seeking with expr4str
+- SetRecno support if Sequenced
+- Added Option toSequenceIndex to enable showing relative position in scrollbar
+  if indexname is set
+
+
+> v1.10 <
+
+Support for Delphi 5 & C++Builder 3:
+- Splitting CB4Tables in CB4Reg (for designtime) and CB4Tables
+- CB4Common now only needed for pre Delphi 5 versions
+- TCB4Database descendent of TCustomConnection
+- First support for Sprigs ('Datamodule inspector')
+
+TCB4Table
+- Solved bug in Inserting a new record: Memofield got filled by Memofield from
+  other record.
+- Solved bug in GotoCurrent
+- Better handling of closing indexfiles
+- Solved bug in (production)index in relation to master/detail.
+- Less chance on exceptions in combination Codebase 6.3 with IDE or NT with SP4+
+  (workaround)
+
+
+> v1.11 <
+
+TCB4Table
+- Solved bug in opening a table after closing the table with a range still active
+- Solved bug in Lookup/Locate resulting in undefined field values (Lookup fields)
+- Solved bug in sequenced index mode while navigating with scrollbar in grid
+- Started support for new CB6.5 Visual Foxpro types: r4int/r4datetime (no seeking
+  yet!)
+
+
+> v1.12 <
+
+Added:
+- Support for Delphi 5 Drag and Drop in DataModule Designer
+- Multiselect Database property allowed
+- Prepared for CBuilder 4 & 5
+
+TCB4Table
+- Solved bug in Append (wrong record was selected after append)
+
+
+> v1.20 <
+
+Added:
+- CBuilder 5 support
+- Improvements in BDE (Delphi 3 -> Delphi 5), now also in CB4 Tables
+- List all CB4Databases with new functions DatabaseCount and Databases(Index)
+
+TCB4Table
+- Added toRecognizeTagExpressions to Options. See CB4TableInfo.html for info.
+- Added FieldLength() function
+- Better detection of Empty Memo & Blob fields
+- Better IndexPath resolving
+- Solved bug in locate, lookup filters
+- Solved bug in Locate/lookup on empty tables
+- Solved bug in ranges with no RangeEnd specified
+- Solved possible error in RollBack
+
+TCB4Database
+- Stricter naming of DatabaseName property (it must have a DatabaseName!)
+
+
+> v1.21 <
+
+TCB4Table
+- Solved resource leak in getting tag information
+- Solved bug in getting tag expression information
+- RecNo now always gives back the real recordnumber when toSequenceIndex not set
+
+TCB4Database
+- Added properties LockAttempts and LockDelay (corresponding to code4 members)
+
+
+> v1.22 <
+
+Changed:
+- TBlobstream changed to TCB4Blobstream (prevent problems with other DB Comps)
+
+TCB4Table
+- Solved resource leaks in CreateTable
+- Solved problems in locating characterfields with ' (single quotes) in them
+- Solved problems in locating empty strings and partial strings
+- Better scrollbars when ranges are set in toSequenceIndex mode
+
+
+> v1.50 <
+
+Changed:
+- Kylix support
+- Delphi 6 support (including Object treeview)
+
+TCB4Table
+- Solved problem in client/server when modifying a table didn't work
+- An exception is now always raised when setting a filter failes
+- Solved problem in locating datefields: it now works
+
+
+> v1.60 <
+
+Changed:
+- Kylix 2 and C++Builder 6 support
+- Optimizations (Removed warnings, less exceptions, better $IFDEF's, etc)
+
+TCB4Table
+- Solved bug in CompareBookmarks, so multiselecting in TDBGrids now works correct
+- Added support for OEM-ANSI conversions (only on windows!) (See IDE help on
+  TBDEDataSet.Translate and TBlobField & TStringField.Transliterate property)
+- Solved bug in CaseInsensitive searches using Locate/Lookup
+- Solved bug in FindKey/GotoKey in combination with a Filter
+- Solved bug in Rollbackmechanism (After it the Internalstate wasn't always
+  correctly restored)
+- Added toInvalidDatesAsNull option to have invalid date fields shown as Null
+  (i.s.o. exception)
+- Added possibility for a DesignTablePath param in TCB4Database.Params. It
+  allows you to set a designtime tablepath used to show a list of table's.
+  Especially usefull with client/server dll!
+- TCB4Table1.Exists now also works in CodeBase client/server
+
+
+> v1.70 <
+
+Changed:
+- Kylix 3 and Delphi 7 support
+
+TCB4Table
+- Solved bug in CompareBookmarks. Now results are always -1, 0 or 1
+- Solved bug in CreateTable: Some memory wasn't freed.
+- Solved bug in locate, lookup filters: locating null values is now better
+  supported.
+- Solved bug in locate, lookup filters: locating on field(s) if optimized on
+  index with more then the given field(s) now works correct.
+- Added (better) support for Visual FoxPro fields: currency, double, datetime
+  and integer.
+- Added support for nulling Visual FoxPro Fields if used CodeBase DLL supports
+  it: Define NOVFNULLSUPPORT in CB4Tables.pas when it is not supported!
+
+TCB4Database
+- Added public property DatabaseType: it's possible values are: dtCB4Foxpro,
+  dtCB4Clipper or dtCB4dBase and tells what Codebase DLL is used.
+
+Known issues:
+- Locate, lookup filters: locating null values for Visual FoxPro fields doesn't
+  always work (when physical field isn't really nulled, but only flag is set!)
+- Locate, lookup filters: to big filters causes exceptions in codebase dll!
+
+
+> v1.71 <
+
+TCB4Table
+- Solved bug (introduced in v1.70) in InternalInitRecord
+
+
+> v1.80 <
+
+Changed:
+- Added Multi-threaded support: the global data is now protected. Use a separate
+  TCB4Database (with a different databasename) for every thread!
+
+TCB4Table
+- Added GetFieldDataRaw/SetFieldDataRaw methods. They give access to the raw
+  data of a field. See CB4TableInfo.html for more info
+- Added method CreateStringFilterText. It creates a filter on a field value that
+  can be used in the filter property. See CB4TableInfo.html for more info.
+- Added widestring support. (Only getting/setting, locating doesn't work!)
+- Added support for Ascend and Descend in tags when toRecognizeTagExpressions is
+  set in Options. Also the usage of Str() with a Unicode field is recognized.
+- Added toNoCharacterTranslation to Options. When set, field values won't be
+  translated from OEM to Ansi or the other way around.
+- Improved support for using the database property (on runtime) instead of the
+  DatabaseName property.
+- Improved handling of empty filters.
+- Improved handling datetime fields.
+- Solved bug in looking for strings with locate.
+- Solved bug in GetExists (property Exists), it didn't work when the Tablename
+  property had no extension.
+- Solved bug in FindKey/GotoKey when a filter was set.
+- Solved bug in FieldLength method when it tried to get the length of the last
+  field.
+- Solved bug in getting the fieldvalues of Visual foxpro currency and datetime
+  fields.
+- Solved bug in DeleteTable.
+
+TCB4Database
+- Solved bug in GetLockdelay (property LockDelay) that occurred with some
+  compiler options.
+
+
+> v2.00 <
+Changed:
+- Improved Multi-threaded support: you can link a table to a database now
+  using the Database property instead of the DatabaseName property. And then you
+  can set the AutoDatabaseName property of the Database to True. Specifically
+  useful for web applications.
+- Rewritten the whole field/record manipulating stuff to crossplatform code (for
+  .Net support)
+- Added VCL for .Net support
+- Dropped Delphi 3,4 and C++Builder 3,4 support
+
+TCB4Table
+- Redesigned for .Net support.
+- Solved some bugs in Visual foxpro fields.
+
+TCB4Database
+- Added AutoDatabaseName. Use this to let the database generate it's own name on
+  runtime. (For multithreaded support).
+- Added MemoExprSize property. Wrapper around code4memExprSize.
+
+
